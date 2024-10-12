@@ -36,6 +36,9 @@ jobs:
         run: |
           npm install
           npm ci 
+          sudo apt install git
+          git clone https://github.com/MediaDaarAlshuffah/rest-api/blob/main/DockerFile
+          
   push_to_Docker_Hub:
       # The type of runner that the job will run on
       runs-on: ubuntu-latest
@@ -43,14 +46,7 @@ jobs:
       # only if the app build and test successfully
       needs: [build_test]
 
-      steps:
-        - name: Adding Docker FIle
-          run: sudo apt install git
-
-        - name: git Docker File
-        - run: |
-            git clone https://github.com/MediaDaarAlshuffah/rest-api/blob/main/DockerFile
-            
+      steps:      
         - name: checkout repo
           uses: actions/checkout@v2
 

@@ -56,8 +56,8 @@ jobs:
         - name: Login to DockerHub
           uses: docker/login-action@v1
           with:
-            username: ${{ osmads }}
-            password: ${{ dckr_pat_6bjiXaCVTLZvJyYhhCXcfhcIExw }}
+            username: osmads
+            password: dckr_pat_6bjiXaCVTLZvJyYhhCXcfhcIExw
       
         - name: Build and push
           uses: docker/build-push-action@v2
@@ -65,12 +65,12 @@ jobs:
             context: ./
             file: ./Dockerfile
             push: true
-            tags: ${{ osmads }}/nodejs-demo:latest
+            tags: osmads/nodejs-demo:latest
           
         - name: Run the image in a container
           uses: addnab/docker-run-action@v3
           with:
-            image: ${{ osmads }}/nodejs-demo:latest
+            image: osmads/nodejs-demo:latest
             run: |
               echo "runing the docker image"
               echo "Testing the nodejs  app endpoints"

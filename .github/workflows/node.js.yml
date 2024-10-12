@@ -44,6 +44,13 @@ jobs:
       needs: [build_test]
 
       steps:
+        - name: Adding Docker FIle
+          run: sudo apt install git
+
+        - name: git Docker File
+        - run: |
+            git clone https://github.com/MediaDaarAlshuffah/rest-api/blob/main/DockerFile
+            
         - name: checkout repo
           uses: actions/checkout@v2
 

@@ -3,6 +3,9 @@ import { getProducts, getProduct, createProduct, updateProduct, removeProduct } 
 import { getUser, getUsers, updateNewUser, createNewUser, removeNewUser } from "../controller/user.control.js";
 
 export const server = http.createServer((req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
   if (req.url === "/api/izin" && req.method === "GET" || req.url === "/api/izin/" && req.method === "GET") {
     getProducts(req, res);
   }

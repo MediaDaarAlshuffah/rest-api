@@ -55,10 +55,10 @@ export async function updateNewUser(req, res, id) {
             res.end(JSON.stringify({error: "User not found"}));
         }else{
             const body = await getPostData(req, res);
-            const {username, nama, password} = JSON.parse(body);
+            const {username, name, password} = JSON.parse(body);
             const newUser = {
                 username: username || user.username, 
-                nama: nama || user.nama, 
+                name: name || user.name, 
                 password: password || user.password,
                 id: user.id
             };

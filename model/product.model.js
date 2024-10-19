@@ -4,7 +4,7 @@ import { writeData } from "../utils.js";
 export function create(product) {
   return new Promise((resolve, reject) => {
     const id = (products.length + 1).toString();
-    const newProduct = { ...product,tiba:"
+    const newProduct = { ...product,tiba:""
 , id: id };
     products.push(newProduct);
     writeData("data/index.json", products);

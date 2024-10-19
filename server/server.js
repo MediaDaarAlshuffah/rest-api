@@ -3,41 +3,69 @@ import { getProducts, getProduct, createProduct, updateProduct, removeProduct } 
 import { getUser, getUsers, updateNewUser, createNewUser, removeNewUser } from "../controller/user.control.js";
 
 export const server = http.createServer((req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+  
+  if (req.url === "/api/izin" && req.method === "GET" || req.url === "/api/izin/" && req.method === "GET") {
+    res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
   res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
   res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
-  if (req.url === "/api/izin" && req.method === "GET" || req.url === "/api/izin/" && req.method === "GET") {
     getProducts(req, res);
   }
   else if(req.url === "/api" && req.method === "GET"){
+    res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
     res.writeHead(200, {"Content-Type": "text/html"});
     res.write("<h1 class='text-2xl m-5'>API</h1><script src='https://cdn.tailwindcss.com'></script>");
     res.end("<ul class='m-5'><li><a href='/api/products'>- Products</a></li></ul>");
   }
   else if(req.url.match(/\/api\/izin\/([0-9]+)/) && req.method === "GET"){
+    res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
     const id = req.url.split("/")[3];
     getProduct(req, res, id)
   }else if(req.url === '/api/izin' && req.method === 'POST' || req.url === '/api/izin/' && req.method === 'POST'){
     createProduct(req, res);
   }else if(req.url.match(/\/api\/izin\/([0-9]+)/) && req.method === "PUT"){
+    res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
     const id = req.url.split("/")[3];
     updateProduct(req, res, id);
   }
   else if(req.url.match(/\/api\/izin\/([0-9]+)/) && req.method === "DELETE"){
+    res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
     const id = req.url.split("/")[3];
     removeProduct(req, res, id);
   }else if (req.url === "/user/" && req.method === "GET" || req.url === "/user" && req.method === 'GET'){
+    res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
     getUsers(req, res)
   }else if (req.url.match(/\/user\/([0-9]+)/) && req.method === "GET"){
+    res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
     const id = req.url.split("/")[2];
     getUser(req, res, id)
   }else if(req.url === '/user' && req.method === 'POST' || req.url === '/user/' && req.method === 'POST'){
+    res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
     createNewUser(req, res);
   }else if(req.url.match(/\/user\/([0-9]+)/) && req.method === "PUT"){
+    res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
     const id = req.url.split("/")[2];
     updateNewUser(req, res, id);
   }
   else if(req.url.match(/\/user\/([0-9]+)/) && req.method === "DELETE"){
+    res.setHeader('Access-Control-Allow-Origin', '*'); /* @dev First, read about security */
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, DELETE, PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'content-type'); // Might be h
     const id = req.url.split("/")[2];
     removeNewUser(req, res, id);
   }
